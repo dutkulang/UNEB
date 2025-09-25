@@ -1,7 +1,7 @@
 import mongoose, {Schema, model} from "mongoose";
 
 
-// create / add districts
+// create / add district as a separate table
 
 
 const schoolSchema = new Schema({
