@@ -1,5 +1,6 @@
-import { School } from "../models/Schools.js"
-export const allSchools= async(req, res)=>{
+import { School } from "../models/school.js"
+
+export const allSchools = async(req, res)=>{
     try{
         res.status(200).json({
             "schools":[
@@ -18,11 +19,7 @@ export const allSchools= async(req, res)=>{
 export const createASchool = async(req, res)=>{
     const REQUIRED_SCHOOL_FIELDS = ['name', 'centerNumber'];
     try{
-        const data = req?.body
-        if(!data){
-            throw new Error('No data was recieved form client.')
-        }
-
+        const data = req.body
         const reqKeys = Object.keys(data)
         if(!REQUIRED_SCHOOL_FIELDS.every(field=> reqKeys.includes(field))){
             throw new Error("missing required data fields, School Name, District and center number")
