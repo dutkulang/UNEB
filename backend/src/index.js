@@ -2,8 +2,12 @@ import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
 import { connectDB } from "./config/db.js"
+import { schoolsRouter } from "./Router/schools.js";
 const app =  express()
 const PORT  = process.env.PORT || 3000
+
+app.use(express.json())
+app.use("/schools", schoolsRouter);
 
 connectDB().then(
     ()=>{        
