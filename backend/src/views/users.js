@@ -22,12 +22,16 @@ export const allUsers = async(req, res)=>{
 export const deleteUser = async(req, res)=>{
     
     try{
-        const {userId}  = req.params
-        if(!validator.isMongoId(userId)) throw new Error("Invalid ID type")
+        const { userId }  = req.params
+
         if(!userId){
             throw new Error("Missing user ID. Please specify User Id")
         }
+
+        if(!validator.isMongoId(userId)) throw new Error("Invalid ID type")
+        
         const user = await User.findByIdAndDelete(userId)
+        
         if(!user){
             throw new Error(`User does not exist in DB`)
         }
