@@ -5,13 +5,15 @@ import { connectDB } from "./config/db.js"
 import { schoolsRouter } from "./Router/schools.js";
 import { studentRouter } from "./Router/student.js";
 import { authRouter } from "./Router/auth.js";
+import { userRouter } from "./Router/users.js";
 const app =  express()
 const PORT  = process.env.PORT || 3000
 
 app.use(express.json())
 app.use("/schools", schoolsRouter);
 app.use("/students", studentRouter);
-app.use('/auth', authRouter);
+app.use("/auth", authRouter);
+app.use("/users", userRouter )
 
 connectDB().then(
     ()=>{        

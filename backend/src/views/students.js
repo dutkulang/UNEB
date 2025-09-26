@@ -1,4 +1,3 @@
-import { isObjectIdOrHexString } from "mongoose";
 import { Student } from "../models/Student.js";
 
 export const createStudent = async(req, res) => {
