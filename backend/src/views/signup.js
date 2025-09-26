@@ -1,4 +1,4 @@
-import { User } from "../models/user.js"
+import User from "../models/user.js";
 
 export const signUp = async(req, res)=>{
     const REQUIRED_SIGNUP_FIELDS = ['fullName', 'email', 'password']
