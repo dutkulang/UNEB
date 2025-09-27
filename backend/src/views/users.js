@@ -1,8 +1,9 @@
 import User from "../models/user.js"
 import validator from "validator";
+
 export const allUsers = async(req, res)=>{
     try{
-        const users  = await User.find({}).select(["fullName", "gender", "password"])
+        const users  = await User.find({}).select(["fullName", "email", "password"])
         if(users.length === 0){
             res.status(200).json({
                 "message": "No users found."
@@ -31,7 +32,7 @@ export const deleteUser = async(req, res)=>{
         if(!validator.isMongoId(userId)) throw new Error("Invalid ID type")
         
         const user = await User.findByIdAndDelete(userId)
-        
+
         if(!user){
             throw new Error(`User does not exist in DB`)
         }
